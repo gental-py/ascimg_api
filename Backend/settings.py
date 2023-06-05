@@ -17,8 +17,8 @@ class Settings:
         
         if len(density) > 255:
             density = density[:255]
-            
-        if scale > 2:
+
+        if float(scale) > 2:
             scale = 2
 
         return Settings(
