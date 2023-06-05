@@ -54,4 +54,3 @@ def convert_image(file: UploadFile, settings: str):
     time_end = time.perf_counter_ns()
     total_time = time_end-time_start
     return {'time': total_time/1_000_000_000, 'ascii': text, 'error': False}
-
