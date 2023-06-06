@@ -53,7 +53,7 @@ def image_to_ascii(path: str, settings: Settings = Settings(), web_version=False
             char = density_scale.get(pixels[x, y])
             if web_version:
                 if char == " ":
-                    char = "<space>"
+                    char = "&nbsp;"
             text += char
         if web_version:
             text += "<br>"
