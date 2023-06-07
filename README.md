@@ -65,6 +65,3 @@ This file contains just one class that is responsible for: dynamically generatin
 
 * `convert.py`:
 This is main backend's file. It contains two functions (one use another) that uses functionalities from other backend modules. Main function: `image_to_ascii(path: str, settings: settings.Settings = settings.Settings(), web_version: bool = False) -> str` uses second: `prepare_image(path: str, settings: settings.Settings = settings.Settings())` to (as name says) prepare image (resize and apply filters) according to passed (or not) `settings` object. 
-
-* `styles.py` (only `CLI` version.):
-Initializes `colorama` package and contains `COLORS` const dictionary with stringified names of real colors and their ASCII representations.
