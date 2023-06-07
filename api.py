@@ -2,7 +2,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, UploadFile
 from dataclasses import asdict
 import urllib.parse
-from urllib3 import encode_multipart_formdata
 import time
 
 from Backend.convert import image_to_ascii
