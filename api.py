@@ -1,6 +1,8 @@
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, UploadFile
+from dataclasses import asdict
 import urllib.parse
+from urllib3 import encode_multipart_formdata
 import time
 
 from Backend.convert import image_to_ascii
@@ -32,8 +34,12 @@ def parse_settings(data: str) -> Settings:
 def home():
     return {'status': 200}
 
+@api.get("/defaults/")
+def get_default_settings():
+    return asdict(Settings())
+
 @api.post("/convert/")
-def convert_image(file: UploadFile, settings: str):
+def convert_image(file: UploadFile, settings: str, web: bool = False):
     time_start = time.perf_counter_ns()
     file_stream = file.file
 
@@ -46,7 +52,7 @@ def convert_image(file: UploadFile, settings: str):
         return {'error': 'Invalid data length.'}
 
     try:
-        text = image_to_ascii(file_stream, settings_obj, web_version=True)
+        text = image_to_ascii(file_stream, settings_obj, web_version=web)
     except Exception as error:
         print("ERROR:   ", error)
         return {'error': error}
